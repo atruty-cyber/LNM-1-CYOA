@@ -1,0 +1,188 @@
+def defeat_screen(reason):
+    print("""
+    ===================================
+                 PERDIT
+    ===================================
+           (×_×)      
+    ===================================
+    """ + reason + """
+    
+    Iterum ludere? (y/n)
+    """)
+    choice = input("> ")
+    if choice.lower() == "y":
+        start()
+    else:
+        print("Vale!")
+
+def victory_screen():
+    print("""
+    ===================================
+                 VICTORIA!
+    ===================================
+           ＼(＾▽＾)／     
+    ===================================
+    Puella et nauta in aqua sunt. 
+    Vita est bona. Amant vitam.
+    ===================================
+    """)
+    choice = input("Iterum ludere? (y/n) ")
+    if choice.lower() == "y":
+        start()
+    else:
+        print("Vale!")
+
+def start():
+    print("""
+    ===================================
+               PUELLA ET LUPA
+    ===================================
+          (•‿•)       
+         /|   |\\     
+          |   |      
+          /   \\     
+    ===================================
+    Puella est in terra (land). 
+    Puella ambulat per silvam (forest). 
+    Subito aqua est prope et vox auditur.
+    """)
+    choice = input("Puella ad aquam ambulat (a) aut ad vocem ambulat (b)? ")
+
+    if choice.lower() == "a":
+        aqua_path()
+    elif choice.lower() == "b":
+        lupa_path()
+    else:
+        defeat_screen("Puella dubitat. Lupa venit. Perdit.")
+
+def aqua_path():
+    print("""
+    ===================================
+                 AQUA
+    ===================================
+        ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+       ~       ~      ~       ~
+        ~   ~     ~      ~   ~
+    ===================================
+    Aqua est magna et clara (bright). 
+    Femina est ibi et aquam portat.
+    """)
+    choice = input("Puella amat aquam et manet (a) aut puella sequitur feminam (b)? ")
+
+    if choice.lower() == "a":
+        defeat_screen("Puella bibit nimiam aquam. Non ambulat.")
+    elif choice.lower() == "b":
+        print("""
+        (•‿•)   (◕‿◕)
+        Puella     Femina
+        Femina dicit: "Cave lupam!" (Beware the wolf!)
+        """)
+        field_path()
+    else:
+        defeat_screen("Puella non eligit. Lupa venit.")
+
+def lupa_path():
+    print("""
+    ===================================
+                 LUPA
+    ===================================
+         /^ ^\\
+        / 0 0 \\
+        V\\ Y /V
+         / - \\
+         |    \\
+         || (__V
+    ===================================
+    Puella ambulat ad vocem. 
+    Lupa est magna et mala (evil).
+    """)
+    choice = input("Puella fugit (a) aut puella stat et amat lupam (b)? ")
+
+    if choice.lower() == "a":
+        defeat_screen("Puella currit, sed lupa celerior est.")
+    elif choice.lower() == "b":
+        defeat_screen("Puella amat lupam. Lupa edit (eats) puellam.")
+    else:
+        defeat_screen("Puella non eligit. Lupa edit eam.")
+
+def field_path():
+    print("""
+    ===================================
+                TERRA
+    ===================================
+       🌾🌾🌾  👩‍🌾  🌾🌾🌾
+    ===================================
+    Femina ducit puellam ad agricolam (farmer).
+    Agricola curat terram et dicit: 
+    "Nauta est in mari. Poeta est in villa."
+    """)
+    choice = input("Puella sequitur agricolam (a) aut puella petit poetam (b)? ")
+
+    if choice.lower() == "a":
+        defeat_screen("Puella laborat in terra semper. Non est libera.")
+    elif choice.lower() == "b":
+        poet_path()
+    else:
+        defeat_screen("Puella dubitat. Lupa venit.")
+
+def poet_path():
+    print("""
+    ===================================
+                POETA
+    ===================================
+       ✍(◔‿◔)
+    ===================================
+    Poeta dicit: "Amor est fortis. 
+    Athleta in urbe (city) te adiuvat."
+    """)
+    choice = input("Puella sequitur poetam (a) aut puella amat poetam (b)? ")
+
+    if choice.lower() == "a":
+        athlete_path()
+    elif choice.lower() == "b":
+        defeat_screen("Poeta amat filiam suam, non puellam.")
+    else:
+        defeat_screen("Puella non eligit. Poeta abit.")
+
+def athlete_path():
+    print("""
+    ===================================
+                ATHLETA
+    ===================================
+          🏋️
+    ===================================
+    Athleta dicit: "Nauta amat libertatem (freedom). 
+    Si puella nautae credit, victoria est."
+    """)
+    choice = input("Puella sequitur athletam ad nautam (a) aut puella manet in urbe (b)? ")
+
+    if choice.lower() == "a":
+        sailor_path()
+    elif choice.lower() == "b":
+        defeat_screen("Urbs est pulchra sed periculosa (dangerous).")
+    else:
+        defeat_screen("Puella non eligit. Athleta discedit.")
+
+def sailor_path():
+    print("""
+    ===================================
+                NAUTA
+    ===================================
+          ⛵
+    ===================================
+    Nauta amat mare et dicit: 
+    "Puella, si amas terram et aquam et vitam, 
+    mecum naviga!"
+    """)
+    choice = input("Puella navigat cum nauta (a) aut puella manet in terra (b)? ")
+
+    if choice.lower() == "a":
+        victory_screen()
+    elif choice.lower() == "b":
+        defeat_screen("Puella manet in terra. Lupa iterum venit.")
+    else:
+        defeat_screen("Puella dubitat. Tempus fugit.")
+
+
+# start the game
+start()
